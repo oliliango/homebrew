@@ -7,7 +7,8 @@ chdir () {
 BREW_FILE_DIRECTORY=$(chdir "${0%/*}" && pwd -P)
 export HOMEBREW_BREW_FILE="$BREW_FILE_DIRECTORY/${0##*/}"
 
-BREW_SYMLINK=$(readlink "$0")
+BREW_SYMLINK=$(readlink "$0" >/dev/null)
+
 if [ -n "$BREW_SYMLINK" ]
 then
     BREW_SYMLINK_DIRECTORY=$(dirname "$BREW_SYMLINK")
